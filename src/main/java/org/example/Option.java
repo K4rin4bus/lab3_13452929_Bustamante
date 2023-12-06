@@ -13,6 +13,6 @@ public class Option {
         this.message = message;
         this.chatbotCodeLink = chatbotCodeLink;
         this.initialFlowCodeLink = initialFlowCodeLink;
-        Keyword = keyword;
+        this.Keyword = keyword;
     }
 }

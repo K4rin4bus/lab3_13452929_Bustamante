@@ -1,7 +1,7 @@
 package org.example;
 import java.util.List;
 
-public class Option {
+public class Option_Bustamante13452 {
     private int code;
     private String message;
     private int chatbotCodeLink;
@@ -9,7 +9,7 @@ public class Option {
     private List<String> Keywords; //lista
 
     //Constructor Option
-    public Option(int code, String message, int chatbotCodeLink, int initialFlowCodeLink, List<String> keyword) {
+    public Option_Bustamante13452(int code, String message, int chatbotCodeLink, int initialFlowCodeLink, List<String> keyword) {
         this.code = code;
         this.message = message;
         this.chatbotCodeLink = chatbotCodeLink;

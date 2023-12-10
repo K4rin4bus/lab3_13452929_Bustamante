@@ -2,13 +2,13 @@ package org.example;
 
 import java.util.List;
 
-public class Flow {
+public class Flow_Bustamante13452 {
     private int id;
     private String name_Msg;
-    private List<Option> options;
+    private List<Option_Bustamante13452> options;
 
 
-    public Flow(int id, String name_Msg, List<Option> options) {
+    public Flow_Bustamante13452(int id, String name_Msg, List<Option_Bustamante13452> options) {
         this.id = id;
         this.name_Msg = name_Msg;
         this.options = options;
@@ -30,16 +30,16 @@ public class Flow {
         this.name_Msg = name_Msg;
     }
 
-    public List<Option> getOptions() {
+    public List<Option_Bustamante13452> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Option> options) {
+    public void setOptions(List<Option_Bustamante13452> options) {
         this.options = options;
     }
 
     //Agregar opcion
-    public void flowAddOption(Option op){
+    public void flowAddOption(Option_Bustamante13452 op){
         this.options.add(op);
     }
 

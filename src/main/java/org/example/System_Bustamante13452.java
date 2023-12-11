@@ -11,33 +11,42 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
     private String currentUser;//para saber que usuario esta logeado
     public System_Bustamante13452(String name) {
         this.name = name;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = new Date();
         this.currentUser = "";
     }
-
-
-
 
     public void register(String userName, boolean esAdmin, boolean estaLogeado){
         User_Bustamante13452 user = new User_Bustamante13452(userName, esAdmin, estaLogeado);
         users.add(user);
-
     }
 
     public void login(String userName) {
         for(User_Bustamante13452 user : users){//recorre lista usuarios buscando conicidencia
-            if(user.isEstaLogeado() == true) {//si lo encuentra
-                if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
-                    user.login();//lo logea
-                }
+            if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
+                user.login();//lo logea
+
             }
         }
     }
 
+
     @Override
     public void logout(String userName) {
+        for(User_Bustamante13452 user : users){//recorre lista usuarios buscando conicidencia
+            if(Objects.equals(user.getUserName(), userName)){//si lo encuentra
+                user.logout();//lo deslogea
+            }
+        }
+    }
+
+
+
+
+    public void tipoUsuario(String nUserLogin){
 
     }
+
+
 
 
     @Override

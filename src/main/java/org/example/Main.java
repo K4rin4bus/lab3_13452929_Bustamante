@@ -9,9 +9,10 @@ public class Main {
     public static void main(String[] args) {
         //aqui comienza el menu
         Scanner input = new Scanner(System.in);
-        final int MENU_EXIT_OPTION = 3;
+        final int MENU_EXIT_OPTION = 10;
 
         //Creando system
+        //se debe crear algunos datos previos para operar con el sistema
         var s1 = "mySystem";
         System_Bustamante13452 system = new System_Bustamante13452(s1);
         int opUser;
@@ -25,11 +26,12 @@ public class Main {
                 case 1:  //Logear Usuario
                     System.out.println("Ingrese nombre de usuario y presione ENTER:");
                     var nUserLogin = input.next();
-                    system.login(nUserLogin);
+                    system.login(nUserLogin); //va a system a buscar usuario en lista
+                    system.tipoUsuario(nUserLogin);
                     System.out.println(system);
                     System.out.println("Usuario Logeado en sistema\n\n");
 
-
+/*
                     List<String> keywords0p1 = new ArrayList<>();
                     keywords0p1.add("viajar");
                     keywords0p1.add("estudiar");
@@ -44,7 +46,7 @@ public class Main {
                     Flow_Bustamante13452 f1 = new Flow_Bustamante13452(0, "HolaFlow", opciones1);
                     f1.flowAddOption(op2);
                     System.out.println(f1);
-
+*/ //opcion y flow
                     break;
 
                 case 2:  //Registrar Usuario
@@ -67,7 +69,6 @@ public class Main {
                                 break;
                             case 3:
                                 System.out.println("Volviendo al menu usuario");
-                                System.exit(0);
                                 break;
                             default:
                                 System.out.println(opRegister + " opción no valida! Intentalo nuevamente.");
@@ -77,6 +78,7 @@ public class Main {
 
                 case 0:
                     System.out.println("Saliendo del menu principal");
+
                     System.out.println("Bye.. Que la Fuerza te acompañe");
                     System.exit(0);
                     break;

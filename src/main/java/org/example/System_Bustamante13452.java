@@ -15,16 +15,41 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         this.currentUser = "";
     }
 
-    public void register(String userName, boolean esAdmin, boolean estaLogeado){
-        User_Bustamante13452 user = new User_Bustamante13452(userName, esAdmin, estaLogeado);
-        users.add(user);
+    public void register(String userName, boolean esAdmin, boolean estaLogeado) {
+        boolean usuarioExistente = false;
+        for (User_Bustamante13452 user : users) {//recorre lista usuarios buscando conicidencia
+            if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
+                System.out.println("usuario ya existe, no puede crearse nuevamente\n\n");
+                usuarioExistente = true;
+                break;
+            }
+        }
+
+        if (!usuarioExistente) {
+            //usuario no existe, se crea
+            User_Bustamante13452 user = new User_Bustamante13452(userName, esAdmin, estaLogeado);
+            users.add(user);
+            System.out.println("usuario creado satisfactoriamente\n\n");
+        }
     }
 
     public void login(String userName) {
+        boolean userLogExist = false;
+        boolean isAdmin = false;
         for(User_Bustamante13452 user : users){//recorre lista usuarios buscando conicidencia
             if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
                 user.login();//lo logea
-
+                userLogExist = true;
+                isAdmin = user.isEsAdmin();
+                System.out.println("Inicio de sesión exitoso (Admin)\n\n");
+                break;
+            }
+        }
+        if (!userLogExist) {//usuario no existe
+            System.out.println("usuario no existe, no puede iniciar sesion\n\n");
+        } else {
+            if (isAdmin){
+                isAdminLoggedIn = true;
             }
         }
     }

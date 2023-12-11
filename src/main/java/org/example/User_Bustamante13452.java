@@ -6,6 +6,7 @@ public class User_Bustamante13452 {
     private boolean estaLogeado;
 
 
+
     public User_Bustamante13452(String userName, boolean esAdmin, boolean estaLogeado) {
         this.userName = userName;
         this.esAdmin = esAdmin;
@@ -25,10 +26,10 @@ public class User_Bustamante13452 {
 
     public void logout() { this.estaLogeado = false; }
 
-    public String getUserName() { return userName; }
-
     public boolean isEstaLogeado() {
         return estaLogeado;
     }
+    public String getUserName() { return userName; }
+    public boolean isEsAdmin() {  return esAdmin;  }
 
 }

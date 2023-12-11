@@ -1,35 +1,44 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    static boolean isAdminLoggerIn;// bandera para indicar usuario admin conectado
 
     public static void main(String[] args) {
         //aqui comienza el menu
         Scanner input = new Scanner(System.in);
         final int MENU_EXIT_OPTION = 10;
 
-        //Creando system
+        //Creando sistema
         //se debe crear algunos datos previos para operar con el sistema
         var s1 = "mySystem";
         System_Bustamante13452 system = new System_Bustamante13452(s1);
-        int opUser;
+        int opInicio;
         int opRegister;
+        //int opUser;
+        //int opAdmin;
 
         do {
-            printMenuUser();
-            opUser = input.nextInt();
+            printMenuIni();
+            opInicio = input.nextInt();
 
-            switch (opUser) {
+            switch (opInicio) {
                 case 1:  //Logear Usuario
                     System.out.println("Ingrese nombre de usuario y presione ENTER:");
                     var nUserLogin = input.next();
                     system.login(nUserLogin); //va a system a buscar usuario en lista
-                    system.tipoUsuario(nUserLogin);
+                    if(isAdminLoggerIn){  //bandera para saber que menu desplegar
+                        //Bandera = true -> Admin
+                        //mostrar menu user correspondiente
+
+                    } else {
+                        //Bandera = false -> User
+                        //mostrar menu user correspondiente
+
+                    }
                     System.out.println(system);
-                    System.out.println("Usuario Logeado en sistema\n\n");
+
 
 /*
                     List<String> keywords0p1 = new ArrayList<>();
@@ -59,13 +68,11 @@ public class Main {
                                 System.out.println("Ingrese nombre de usuario y presione ENTER:");
                                 var uName = input.next();
                                 system.register(uName, true, false);
-                                System.out.println("Usuario admin creado satisfactoriamente\n\n");
                                 break;
                             case 2: //crear user normal
                                 System.out.println("Ingrese nombre de usuario y presione ENTER:");
                                 var uNameN = input.next();
                                 system.register(uNameN, false, false);
-                                System.out.println("usuario normal creado satisfactoriamente\n\n");
                                 break;
                             case 3:
                                 System.out.println("Volviendo al menu usuario");
@@ -78,18 +85,15 @@ public class Main {
 
                 case 0:
                     System.out.println("Saliendo del menu principal");
-
-                    System.out.println("Bye.. Que la Fuerza te acompañe");
                     System.exit(0);
                     break;
                 default:
-                    System.out.println(opUser + " opción no valida! Intentalo nuevamente.");
-
+                    System.out.println(opInicio + " opción no valida! Intentalo nuevamente.");
             }
-        } while (opUser != MENU_EXIT_OPTION);
+        } while (opInicio != MENU_EXIT_OPTION);
     }
 
-    private static void printMenuUser() {
+    private static void printMenuIni() {
         System.out.print("\n==================================\n");
         System.out.println("  Sistema de Chatbot - Inicio  ");
         System.out.print("==================================\n");
@@ -111,8 +115,35 @@ public class Main {
         System.out.print("\nIngrese su opción: ");
     }
 
+  /*  private static void printMenuUser() {
+        System.out.print("\n=============================================\n");
+        System.out.println("   Sistema de Chatbot - Manu Usuario Normal ");
+        System.out.print("=============================================\n");
+        System.out.print("1. Create something \n");
+        System.out.print("2. Modify something.\n");
+        System.out.print("3. Sum 2 numbers.\n");
+        System.out.print("4. Some option.\n");
+        System.out.print("5. Exit\n");
+        System.out.print("\nEnter your choice: ");
+    }
+    private static void printMenuAdmin() {
+        System.out.print("\n=======================================================\n");
+        System.out.println("  Sistema de Chatbot - Menu Usuario Administrador ");
+        System.out.print("=======================================================\n");
+        System.out.print("1. Crear Chatbot. \n");
+        System.out.print("2. Modificar Chatbot.\n");
+        System.out.print("3. Ejecutar un Chatbot.\n");
+        System.out.print("4. Visualizar Chatbot Existentes en el Sistema.\n");
+        System.out.print("5. Visualizar Chatbot con Flujos y Opciones Creadas.\n");
+        System.out.print("6. Salir\n");
+        System.out.print("\nEnter your choice: ");
+    }*/
+
     /*
-    private static void printMenu() {
+    private static void printMenuUser() {
+        System.out.print("\n=============================================\n");
+        System.out.println("   Sistema de Chatbot - Registro Usuario  ");
+        System.out.print("=============================================\n");
         System.out.println("Main Menu\n");
         System.out.print("1. Create something \n");
         System.out.print("2. Modify something.\n");

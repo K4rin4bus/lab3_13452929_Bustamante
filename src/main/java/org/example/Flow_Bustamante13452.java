@@ -7,42 +7,21 @@ public class Flow_Bustamante13452 {
     private String name_Msg;
     private List<Option_Bustamante13452> options;
 
-
+    //Constructor de flow
     public Flow_Bustamante13452(int id, String name_Msg, List<Option_Bustamante13452> options) {
         this.id = id;
         this.name_Msg = name_Msg;
         this.options = options;
     }
 
-    public int getId() {
-        return id;
-    }
+    //Metodos getters y setters del Flow
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getName_Msg() {
-        return name_Msg;
-    }
-
-    public void setName_Msg(String name_Msg) {
-        this.name_Msg = name_Msg;
-    }
-
-    public List<Option_Bustamante13452> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<Option_Bustamante13452> options) {
-        this.options = options;
-    }
-
-    //Agregar opcion
+    //Agregar opcion al flow
     public void flowAddOption(Option_Bustamante13452 op){
+        //validar opcion unica (con for)
         this.options.add(op);
     }
-
 
     @Override
     public String toString() {

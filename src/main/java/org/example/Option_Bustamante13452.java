@@ -6,7 +6,7 @@ public class Option_Bustamante13452 {
     private String message;
     private int chatbotCodeLink;
     private int initialFlowCodeLink;
-    private List<String> Keywords; //lista
+    private List<String> Keywords; //lista palabras claves
 
     //Constructor Option
     public Option_Bustamante13452(int code, String message, int chatbotCodeLink, int initialFlowCodeLink, List<String> keyword) {
@@ -15,46 +15,6 @@ public class Option_Bustamante13452 {
         this.chatbotCodeLink = chatbotCodeLink;
         this.initialFlowCodeLink = initialFlowCodeLink;
         this.Keywords = keyword;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public int getChatbotCodeLink() {
-        return chatbotCodeLink;
-    }
-
-    public void setChatbotCodeLink(int chatbotCodeLink) {
-        this.chatbotCodeLink = chatbotCodeLink;
-    }
-
-    public int getInitialFlowCodeLink() {
-        return initialFlowCodeLink;
-    }
-
-    public void setInitialFlowCodeLink(int initialFlowCodeLink) {
-        this.initialFlowCodeLink = initialFlowCodeLink;
-    }
-
-    public List<String> getKeyword() {
-        return Keywords;
-    }
-
-    public void setKeyword(List<String> keyword) {
-        Keywords = keyword;
     }
 
     @Override

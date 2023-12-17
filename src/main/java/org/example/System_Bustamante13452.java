@@ -8,7 +8,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
     private String name;
     private Date fechaCreacion;
     private List<User_Bustamante13452> users = new ArrayList<>();
+
     private String currentUser;//para saber que usuario esta logeado
+
     public System_Bustamante13452(String name) {
         this.name = name;
         this.fechaCreacion = new Date();
@@ -17,6 +19,7 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
 
     public void register(String userName, boolean esAdmin, boolean estaLogeado) {
         boolean usuarioExistente = false;
+
         for (User_Bustamante13452 user : users) {//recorre lista usuarios buscando conicidencia
             if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
                 System.out.println("usuario ya existe, no puede crearse nuevamente\n\n");
@@ -33,27 +36,26 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
-    public void login(String userName) {
+    public boolean login(String userName) {
         boolean userLogExist = false;
-        boolean isAdmin = false;
-        for(User_Bustamante13452 user : users){//recorre lista usuarios buscando conicidencia
+        boolean isAdminLoggerIn = false;
+
+        for (User_Bustamante13452 user : users) {//recorre lista usuarios buscando conicidencia
             if (Objects.equals(user.getUserName(), userName)) {//si lo encuentra
                 user.login();//lo logea
                 userLogExist = true;
-                isAdmin = user.isEsAdmin();
-                System.out.println("Inicio de sesión exitoso (Admin)\n\n");
+                isAdminLoggerIn = user.isEsAdmin();// asigna tipo de usuario
+                System.out.println(isAdminLoggerIn);
+                // return user.isEsAdmin();
                 break;
             }
         }
-        if (!userLogExist) {//usuario no existe
-            System.out.println("usuario no existe, no puede iniciar sesion\n\n");
-        } else {
-            if (isAdmin){
-                isAdminLoggedIn = true;
-            }
-        }
-    }
 
+        if (!userLogExist) {//usuario no existe
+            System.out.println("usuario no existe, debe registrarse para iniciar sesion\n\n");
+        }
+        return isAdminLoggerIn;
+    }
 
     @Override
     public void logout(String userName) {
@@ -63,16 +65,6 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
             }
         }
     }
-
-
-
-
-    public void tipoUsuario(String nUserLogin){
-
-    }
-
-
-
 
     @Override
     public String toString() {

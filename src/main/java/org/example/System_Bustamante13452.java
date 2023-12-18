@@ -8,8 +8,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
     private String name;
     private Date fechaCreacion;
     private List<User_Bustamante13452> users = new ArrayList<>();
-
     private String currentUser;//para saber que usuario esta logeado
+    private List<Chatbot_Bustamante13452> chatbots = new ArrayList<>();
+   // private List<History_Bustamante13452> history = new ArrayList<>();
 
     public System_Bustamante13452(String name) {
         this.name = name;
@@ -66,13 +67,34 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
+
+    public void systemAddChatbot(int idChatbot, String nameChatbot, String msgChatbot, int idChatbotFlow, List<Flow_Bustamante13452> flows){
+        boolean chatbotExiste = false;
+
+        for (Chatbot_Bustamante13452 id : chatbots) {//recorre lista chatbot buscando conicidencia
+            if (Objects.equals(id.getChatbotId(), id)) {//si lo encuentra
+                System.out.println("Chatbot ya existe, no puede agregarse\n\n");
+                chatbotExiste = true;
+                break;
+            }
+        }
+        if (!chatbotExiste) {
+            //chatbot no existe, se crea
+            Chatbot_Bustamante13452 chatbot = new Chatbot_Bustamante13452(idChatbot, nameChatbot, msgChatbot, idChatbotFlow, flows);
+            chatbots.add(chatbot);
+            System.out.println("Chatbot agregado al sistema satisfactoriamente\n\n");
+        }
+    }
+
+
     @Override
     public String toString() {
         return "System_Bustamante13452{" +
-                "Nombre='" + name + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                ", usuarios=" + users +
-                ", usuario actual='" + currentUser + '\'' +
+                "Nombre sistema='" + name + '\'' +
+                ", Fecha Creacion=" + fechaCreacion +
+                ", Usuarios=" + users +
+                ", currentUser='" + currentUser + '\'' +
+                ", Chatbots=" + chatbots +
                 '}';
     }
 }

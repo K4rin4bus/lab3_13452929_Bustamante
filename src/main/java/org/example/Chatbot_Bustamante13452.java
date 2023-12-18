@@ -21,7 +21,7 @@ public class Chatbot_Bustamante13452 {
 
 
     //Agregar opcion al flow
-    public void chatAddFlow(Flow_Bustamante13452 flow){
+    public void chatbotAddFlow(Flow_Bustamante13452 flow){
         //validar opcion unica (con for)
         this.flows.add(flow);
     }
@@ -36,5 +36,45 @@ public class Chatbot_Bustamante13452 {
                 ", startFlowId=" + startFlowId +
                 ", flows=" + flows +
                 '}';
+    }
+
+    public int getChatbotId() {
+        return chatbotId;
+    }
+
+    public void setChatbotId(int chatbotId) {
+        this.chatbotId = chatbotId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getWelcomeMsg() {
+        return welcomeMsg;
+    }
+
+    public void setWelcomeMsg(String welcomeMsg) {
+        this.welcomeMsg = welcomeMsg;
+    }
+
+    public int getStartFlowId() {
+        return startFlowId;
+    }
+
+    public void setStartFlowId(int startFlowId) {
+        this.startFlowId = startFlowId;
+    }
+
+    public List<Flow_Bustamante13452> getFlows() {
+        return flows;
+    }
+
+    public void setFlows(List<Flow_Bustamante13452> flows) {
+        this.flows = flows;
     }
 }

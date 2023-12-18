@@ -14,9 +14,6 @@ public class Flow_Bustamante13452 {
         this.options = options;
     }
 
-    //Metodos getters y setters del Flow
-
-
     //Agregar opcion al flow
     public void flowAddOption(Option_Bustamante13452 op){
         //validar opcion unica (con for)

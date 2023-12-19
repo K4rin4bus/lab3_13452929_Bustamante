@@ -82,14 +82,13 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
             //chatbot no existe, se crea
             Chatbot_Bustamante13452 chatbot = new Chatbot_Bustamante13452(idChatbot, nameChatbot, msgChatbot, idChatbotFlow, flows);
             chatbots.add(chatbot);
-            System.out.println("Chatbot agregado al sistema satisfactoriamente\n\n");
         }
     }
 
 
     @Override
     public String toString() {
-        return "System_Bustamante13452{" +
+        return "\n System_Bustamante13452{" +
                 "Nombre sistema='" + name + '\'' +
                 ", Fecha Creacion=" + fechaCreacion +
                 ", Usuarios=" + users +

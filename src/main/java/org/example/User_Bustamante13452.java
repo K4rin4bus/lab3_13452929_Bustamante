@@ -14,7 +14,7 @@ public class User_Bustamante13452 {
 
     @Override
     public String toString() {
-        return "User_Bustamante13452{" +
+        return "\n User_Bustamante13452{" +
                 "Nombre Usuario ='" + userName + '\'' +
                 ", es administrador =" + esAdmin +
                 ", estaLogeado =" + estaLogeado +

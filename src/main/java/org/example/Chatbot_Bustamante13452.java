@@ -29,7 +29,7 @@ public class Chatbot_Bustamante13452 {
 
     @Override
     public String toString() {
-        return "Chatbot_Bustamante13452{" +
+        return "\n Chatbot_Bustamante13452{" +
                 "chatbotId=" + chatbotId +
                 ", name='" + name + '\'' +
                 ", welcomeMsg='" + welcomeMsg + '\'' +
@@ -37,6 +37,9 @@ public class Chatbot_Bustamante13452 {
                 ", flows=" + flows +
                 '}';
     }
+
+
+      //  System.out.println("\n" + fInicial + "\n" + fViajar + "\n" + fLugares);
 
     public int getChatbotId() {
         return chatbotId;

@@ -33,39 +33,19 @@ public class Option_Bustamante13452 {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public int getChatbotCodeLink() {
         return chatbotCodeLink;
     }
 
-    public void setChatbotCodeLink(int chatbotCodeLink) {
-        this.chatbotCodeLink = chatbotCodeLink;
-    }
-
     public int getInitialFlowCodeLink() {
         return initialFlowCodeLink;
     }
 
-    public void setInitialFlowCodeLink(int initialFlowCodeLink) {
-        this.initialFlowCodeLink = initialFlowCodeLink;
-    }
-
     public List<String> getKeywords() {
         return Keywords;
-    }
-
-    public void setKeywords(List<String> keywords) {
-        Keywords = keywords;
     }
 }

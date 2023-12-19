@@ -16,7 +16,9 @@ public class Main {
         List<Option_Bustamante13452> opcion = new ArrayList<>(); //lista de opciones
         List<Flow_Bustamante13452> flows = new ArrayList<>(); // Lista de Flujos
         List<Chatbot_Bustamante13452> chatbots = new ArrayList<>(); //Lista de Chatbots
-
+        List<Option_Bustamante13452> opNew = new ArrayList<>();
+        List<Flow_Bustamante13452> flowNew = new ArrayList<>();
+        List<Chatbot_Bustamante13452> chatbotNew = new ArrayList<>();
 
         /* Inicio Carga de datos duros al sistema  */
         system.register("usuario01", true, false);
@@ -94,7 +96,7 @@ public class Main {
                             switch (opAdmin) {
                                 case 1: //Crear Chatbot.
                                     System.out.println(" Para crear un Chatbot antes debe crear un Flujo y sus Opciones,");
-                                    System.out.println(" desea hacerlo? construyalo siguiendo numeros del menu");
+                                    System.out.println(" desea hacerlo? construyalo siguiendo orden del menu");
 
                                     do {
                                         mostrarMenuChatbot();
@@ -120,16 +122,17 @@ public class Main {
                                                 System.out.println("Ingrese codigo opcion, presione ENTER:");
                                                 var vCodOp = input.nextInt();
                                                 System.out.println("Ingrese mensaje opcion, presione ENTER:");
-                                                var vMsgOp = input.nextLine();
+                                                var vMsgOp = input.next();
                                                 System.out.println("Ingrese Codigo Link Chatbot, presione ENTER:");
                                                 var vCodLinkChatbotOp = input.nextInt();
                                                 System.out.println("Ingrese Codigo Link Initial Flow, presione ENTER:");
                                                 var vCodLinkFlowIniOp = input.nextInt();
                                                 Option_Bustamante13452 vOpcion = new Option_Bustamante13452(vCodOp, vMsgOp, vCodLinkChatbotOp,vCodLinkFlowIniOp, keywordsOpcion);
                                                 opcion.add(vOpcion);
+                                                opNew.add(vOpcion);
                                                 System.out.print("\n=======================================================\n");
                                                 System.out.println("  Mostrando contenido de opcion creada: \n");
-                                                System.out.println(opcion);
+                                                System.out.println(opNew);
                                                 break;
 
                                             case 2: //Crear Flujo.
@@ -140,11 +143,12 @@ public class Main {
                                                 var vIdFlow = input.nextInt();
                                                 System.out.println("Ingrese mensaje Flow, presione ENTER:");
                                                 var vMsgFlow = input.next();
-                                                Flow_Bustamante13452 vFlow = new Flow_Bustamante13452(vIdFlow, vMsgFlow, opcion);
+                                                Flow_Bustamante13452 vFlow = new Flow_Bustamante13452(vIdFlow, vMsgFlow, opNew);
+                                                flowNew.add(vFlow);
                                                 flows.add(vFlow);
                                                 System.out.print("\n=======================================================\n");
                                                 System.out.println("Mostrando contenido de flujo creado mas opcion: \n");
-                                                System.out.println(flows);
+                                                System.out.println(flowNew);
                                                 break;
 
                                             case 3: //Crear Chatbot.
@@ -159,12 +163,13 @@ public class Main {
                                                 var vMsgChatbot = input.next();
                                                 System.out.println("Ingrese Id Flujo Inicial, presione ENTER:");
                                                 var vIdChatbotFlow = input.nextInt();
-                                                Chatbot_Bustamante13452 vChatbot = new Chatbot_Bustamante13452(vIdChatbot, vNameChatbot, vMsgChatbot, vIdChatbotFlow, flows);
+                                                Chatbot_Bustamante13452 vChatbot = new Chatbot_Bustamante13452(vIdChatbot, vNameChatbot, vMsgChatbot, vIdChatbotFlow, flowNew);
                                                 chatbots.add(vChatbot);
+                                                chatbotNew.add(vChatbot);
                                                 //Agregar al sistema
-                                                system.systemAddChatbot(vIdChatbot, vNameChatbot, vMsgChatbot, vIdChatbotFlow, flows);
-                                                System.out.println("\n Mostrando contenido System: ");
-                                                System.out.println(system);
+                                                system.systemAddChatbot(vIdChatbot, vNameChatbot, vMsgChatbot, vIdChatbotFlow, flowNew);
+                                                System.out.println("\n Mostrando chatbot creado: ");
+                                                System.out.println(chatbotNew);
                                                 break;
 
                                             case 0:
@@ -321,6 +326,8 @@ public class Main {
                                     break;
                                 case 0:
                                     System.out.println("Cerrando sesion");
+                                    system.logout(nUserLogin); //va a system a buscar usuario en lista
+
                                     break;
                                 default:
                                     System.out.println(opAdmin + " opción no valida! Intentalo nuevamente.");
@@ -356,6 +363,7 @@ public class Main {
 
                                 case 0:
                                     System.out.println("Cerrando sesion");
+                                    system.logout(nUserLogin); //va a system a buscar usuario en lista
                                     break;
 
                                 default:
@@ -461,39 +469,11 @@ public class Main {
         System.out.print("\n=============================================\n");
         System.out.println("   Sistema de Chatbot - Menu Usuario Normal ");
         System.out.print("=============================================\n");
-        System.out.print("1. Ejecutar un Chatbot. \n");
-        System.out.print("2. Visualizar Chatbots Existentes en el Sistema.\n");
-        System.out.print("3. Visualizar Flows Existentes en el Sistema.\n");
-        System.out.print("4. Visualizar Options Existentes en el Sistema.\n");
+        System.out.print("1. Visualizar Chatbots Existentes en el Sistema.\n");
+        System.out.print("2. Visualizar Flows Existentes en el Sistema.\n");
+        System.out.print("3. Visualizar Options Existentes en el Sistema.\n");
         System.out.print("0. Finalizar sesion\n");
         System.out.print("\nIngrese su opción: ");
     }
-
-    /* Menu tipo
-    do {
-        printMenuNuevo();
-        opMenuNuevo = input.nextInt();
-
-        switch (opMenuNuevo) {
-            case 1: //
-                System.out.println("Ingrese algo y presione ENTER:");
-                break;
-
-            case 2: //crear user normal
-                System.out.println("Ingrese algo y presione ENTER:");
-                break;
-
-            case 0:
-                System.out.println("Volviendo al menu usuario");
-                break;
-
-            default:
-                System.out.println(opMenuNuevo + " opción no valida! Intentalo nuevamente.");
-            }
-        } while (opMenuNuevo != 0);
-
-        System.out.println("\n" + fInicial + "\n" + fViajar + "\n" + fLugares);
-
-    */
 
 }

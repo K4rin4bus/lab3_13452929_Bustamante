@@ -38,46 +38,23 @@ public class Chatbot_Bustamante13452 {
                 '}';
     }
 
-
-      //  System.out.println("\n" + fInicial + "\n" + fViajar + "\n" + fLugares);
-
     public int getChatbotId() {
         return chatbotId;
-    }
-
-    public void setChatbotId(int chatbotId) {
-        this.chatbotId = chatbotId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getWelcomeMsg() {
         return welcomeMsg;
-    }
-
-    public void setWelcomeMsg(String welcomeMsg) {
-        this.welcomeMsg = welcomeMsg;
     }
 
     public int getStartFlowId() {
         return startFlowId;
     }
 
-    public void setStartFlowId(int startFlowId) {
-        this.startFlowId = startFlowId;
-    }
-
     public List<Flow_Bustamante13452> getFlows() {
         return flows;
-    }
-
-    public void setFlows(List<Flow_Bustamante13452> flows) {
-        this.flows = flows;
     }
 }

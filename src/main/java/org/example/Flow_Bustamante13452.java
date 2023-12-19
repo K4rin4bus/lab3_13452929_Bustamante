@@ -20,9 +20,7 @@ public class Flow_Bustamante13452 {
         boolean optionExiste = false;
         this.options.add(op);
     }
-    public void setOptions(List<Option_Bustamante13452> options) {
-        this.options = options;
-    }
+
     @Override
     public String toString() {
         return "\n Flow{" +
@@ -36,16 +34,8 @@ public class Flow_Bustamante13452 {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName_Msg() {
         return name_Msg;
-    }
-
-    public void setName_Msg(String name_Msg) {
-        this.name_Msg = name_Msg;
     }
 
     public List<Option_Bustamante13452> getOptions() {

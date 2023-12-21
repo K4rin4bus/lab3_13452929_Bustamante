@@ -306,7 +306,13 @@ public class Main {
                                     System.out.print("\n============================================================\n");
                                     System.out.println(" Sistema de Chatbot - Ejecutar Chatbot ");
                                     System.out.print("============================================================\n");
-                                    System.out.println("\n Requerimiento NO implementado \n");
+
+                                    System.out.println("Bienvenido al chatbot. Escribe 'salir' para terminar conversacion\n");
+                                    System.out.println("Que deseas hacer?:");
+                                    System.out.println("1) Viajar");
+                                    System.out.println("2) Estudiar");
+                                    system.talk(flows, opcion);
+                                    System.out.println("terminando conversacion.\n");
                                     break;
 
 

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner; //estoy probando
 
 public class System_Bustamante13452 implements ISystem_Bustamante13452 {
     private String name;
@@ -67,7 +68,6 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
-
     public void systemAddChatbot(int idChatbot, String nameChatbot, String msgChatbot, int idChatbotFlow, List<Flow_Bustamante13452> flows){
         boolean chatbotExiste = false;
 
@@ -84,6 +84,67 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
             chatbots.add(chatbot);
         }
     }
+
+    public String talk(List<Flow_Bustamante13452> flows, List<Option_Bustamante13452> options){
+
+        Scanner inputTalk = new Scanner(System.in);
+        //List<Flow_Bustamante13452> flowsTalk = inicializarFlows();
+        List<Flow_Bustamante13452> flowsTalk = flows;
+
+        while (true) {
+            System.out.print("Usuario: ");
+            String userInput = inputTalk.nextLine();
+
+            if (userInput.equalsIgnoreCase("salir")) {
+                System.out.println("¡Hasta luego!");
+                break;
+            }
+
+            Flow_Bustamante13452 matchingFlow = buscarFlujoPorOpcion(userInput, flowsTalk);
+
+            System.out.println(matchingFlow);
+            if (matchingFlow != null) {
+                System.out.println("Chatbot: " + matchingFlow.getName_Msg());
+                // Aquí puedes realizar acciones adicionales según el flujo encontrado.
+
+
+            } else {
+                System.out.println("Chatbot: No se encontró una opción correspondiente.");
+                // Puedes manejar este caso según tus necesidades.
+            }
+        }
+        inputTalk.close();
+
+
+        // Por ahora, simplemente devuelve una respuesta genérica.
+        return "¡Hola! Soy un chatbot y estoy procesando tu mensaje";
+
+
+    }
+
+    private static List<Flow_Bustamante13452> inicializarFlows(){
+        List<Flow_Bustamante13452> flowsTalk = new ArrayList<>();
+
+        //agregar flujos a la lista
+
+        return flowsTalk;
+    }
+
+    private static Flow_Bustamante13452 buscarFlujoPorOpcion(String userInput, List<Flow_Bustamante13452> flowsTalk){
+        // Itera sobre la lista de flujos y busca una opción que coincida con el input del usuario.
+        for (Flow_Bustamante13452 flowTalk : flowsTalk){
+            for(Option_Bustamante13452 optionTalk : flowTalk.getOptions()){
+                for (String keyword : optionTalk.getKeywords()) {
+                    if (userInput.toLowerCase().contains(keyword.toLowerCase())) {
+                        return flowTalk; // Devuelve el flujo si se encuentra una coincidencia.
+                    }
+                }
+            }
+        }
+        return null; //Devuelve null si no se encuentra ninguna coincidencia.
+    }
+
+
 
 
     @Override

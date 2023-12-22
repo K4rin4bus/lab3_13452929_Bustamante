@@ -85,10 +85,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
-    public String talk(List<Flow_Bustamante13452> flows, List<Option_Bustamante13452> options){
+    public String talk(List<Flow_Bustamante13452> flows){
 
         Scanner inputTalk = new Scanner(System.in);
-        //List<Flow_Bustamante13452> flowsTalk = inicializarFlows();
         List<Flow_Bustamante13452> flowsTalk = flows;
 
         while (true) {
@@ -105,29 +104,19 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
             System.out.println(matchingFlow);
             if (matchingFlow != null) {
                 System.out.println("Chatbot: " + matchingFlow.getName_Msg());
-                // Aquí puedes realizar acciones adicionales según el flujo encontrado.
-
+                String match = matchingFlow.getName_Msg();
+                // realizar acciones según el flujo encontrado.
+                mostrarFlujoFinder(matchingFlow);
 
             } else {
                 System.out.println("Chatbot: No se encontró una opción correspondiente.");
                 // Puedes manejar este caso según tus necesidades.
             }
         }
-        inputTalk.close();
 
-
-        // Por ahora, simplemente devuelve una respuesta genérica.
+        // Por ahora, devuelve una respuesta, quizas aqui podria ir creando el history
         return "¡Hola! Soy un chatbot y estoy procesando tu mensaje";
 
-
-    }
-
-    private static List<Flow_Bustamante13452> inicializarFlows(){
-        List<Flow_Bustamante13452> flowsTalk = new ArrayList<>();
-
-        //agregar flujos a la lista
-
-        return flowsTalk;
     }
 
     private static Flow_Bustamante13452 buscarFlujoPorOpcion(String userInput, List<Flow_Bustamante13452> flowsTalk){
@@ -144,6 +133,21 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         return null; //Devuelve null si no se encuentra ninguna coincidencia.
     }
 
+
+    private static void mostrarFlujoFinder(Flow_Bustamante13452 flowEncontrado){
+        String msgFinder = flowEncontrado.getName_Msg();
+        List<Option_Bustamante13452> opFinder = new ArrayList<>();
+        opFinder = flowEncontrado.getOptions();
+        System.out.print("\n==================================\n");
+        System.out.println(msgFinder);
+        System.out.print("==================================\n");
+        for(Option_Bustamante13452 op : opFinder){
+            String msgOpFinder = op.getMessage();
+            System.out.print(msgOpFinder);
+            System.out.print("\n");
+        }
+        System.out.print("==================================\n");
+    }
 
 
 

@@ -24,63 +24,79 @@ public class Main {
         system.register("usuario01", true, false);
 
         //Creo Keywords
-        List<String> keywordsOp1 = Arrays.asList("turistear", "conocer");
-        List<String> keywordsOp2 = Arrays.asList("aprender", "perfeccionarme");
-        List<String> keywordsOp3 = Arrays.asList("auto", "camioneta");
-        List<String> keywordsOp4 = Arrays.asList("consulta", "examen");
-        List<String> keywordsOp5 = Arrays.asList("viajar");
-        //Creo opciones
-        Option_Bustamante13452 op1 = new Option_Bustamante13452(1, "Viajar", 0, 1, keywordsOp1);
-        Option_Bustamante13452 op2 = new Option_Bustamante13452(2, "Estudiar", 0, 1, keywordsOp2);
-        Option_Bustamante13452 op3 = new Option_Bustamante13452(3, "Arrendar vehiculo", 0, 1,keywordsOp3);
-        Option_Bustamante13452 op4 = new Option_Bustamante13452(4, "Reserva hora", 0, 1, keywordsOp4);
-        Option_Bustamante13452 op5 = new Option_Bustamante13452(5, "New York", 1, 2, keywordsOp5);
-        Option_Bustamante13452 op6 = new Option_Bustamante13452(6, "Paris", 1, 2, keywordsOp5);
-        Option_Bustamante13452 op7 = new Option_Bustamante13452(7, "Chile", 1, 2,keywordsOp5);
-        Option_Bustamante13452 op8 = new Option_Bustamante13452(8, "Pregrado", 2, 3, keywordsOp2);
-        Option_Bustamante13452 op9 = new Option_Bustamante13452(8, "Postgrado", 2, 3, keywordsOp2);
-        //agregar opciones a lista de opciones
-        opcion.add(op1);
-        opcion.add(op2);
-        opcion.add(op3);
-        opcion.add(op4);
-        opcion.add(op5);
-        opcion.add(op6);
-        opcion.add(op7);
-        opcion.add(op8);
+        List<String> keywordsOp1 = Arrays.asList("turistear", "conocer", "aventura"); List<String> keywordsOp2 = Arrays.asList("educacion", "aprendizaje");
+        List<String> keywordsOp3 = Arrays.asList("montaña", "escalada"); List<String> keywordsOp4 = Arrays.asList("buceo", "oceano");
+        List<String> keywordsOp5 = Arrays.asList("solo", "sin acompañante"); List<String> keywordsOp6 = Arrays.asList("acompañado", "familia");
+        List<String> keywordsOp7 = Arrays.asList("doctorado", "PhD", "investigacion"); List<String> keywordsOp8 = Arrays.asList("master", "maestria", "especialización");
+        List<String> keywordsOp9 = Arrays.asList("cursos", "educacion continua", "habilidades"); List<String> keywordsOp10 = Arrays.asList("local", "nacional");  List<String> keywordsOp11 = Arrays.asList("internacional");
 
+        //Creo opciones
+        Option_Bustamante13452 op1 = new Option_Bustamante13452(1, "1) Viajar", 0, 1, keywordsOp1);
+        Option_Bustamante13452 op2 = new Option_Bustamante13452(2, "2) Aprender algo nuevo", 0, 1, keywordsOp2);
         //Lista de opciones Flujo Inicial
         List<Option_Bustamante13452> opFinicial = new ArrayList<>();
         opFinicial.add(op1);
-        Flow_Bustamante13452 fInicial = new Flow_Bustamante13452(0, "Flujo Inicial", opFinicial);
+        Flow_Bustamante13452 fInicial = new Flow_Bustamante13452(0, "Que te gustaria hacer?", opFinicial);
         fInicial.flowAddOption(op2);
-        fInicial.flowAddOption(op3);
-        fInicial.flowAddOption(op4);
 
+        Option_Bustamante13452 op3 = new Option_Bustamante13452(3, "1) Aventura en la montaña", 1, 2, keywordsOp3);
+        Option_Bustamante13452 op4 = new Option_Bustamante13452(4, "2) Aventura submarina", 1, 2, keywordsOp4);
+        //Lista de opciones Flujo Viajar
         List<Option_Bustamante13452> opViajar = new ArrayList<>();
-        opViajar.add(op5);
-        Flow_Bustamante13452 fViajar = new Flow_Bustamante13452(1, "A donde deseas viajar?", opViajar);
-        fViajar.flowAddOption(op6);
-        fViajar.flowAddOption(op7);
+        opViajar.add(op3);
+        Flow_Bustamante13452 fViajar = new Flow_Bustamante13452(1, "Que aventura quieres?", opViajar);
+        fViajar.flowAddOption(op4);
 
+        Option_Bustamante13452 op5 = new Option_Bustamante13452(5, "1) Viajo solo", 1, 3, keywordsOp5);
+        Option_Bustamante13452 op6 = new Option_Bustamante13452(6, "2) Viajo con familia", 1, 3, keywordsOp6);
+        //Lista de opciones Flujo Viajar-Vas
+        List<Option_Bustamante13452> opVas = new ArrayList<>();
+        opVas.add(op5);
+        Flow_Bustamante13452 fVas = new Flow_Bustamante13452(2, "Vas solo o acompañado?", opVas);
+        fVas.flowAddOption(op6);
 
+        Option_Bustamante13452 op7 = new Option_Bustamante13452(7, "1) Quiero hacer un doctorado", 2, 4, keywordsOp7);
+        Option_Bustamante13452 op8 = new Option_Bustamante13452(8, "2) Estoy interesado en un master", 2, 4, keywordsOp8);
+        Option_Bustamante13452 op9 = new Option_Bustamante13452(9, "3) Deseo informacion sobre cursos cortos", 2, 4, keywordsOp9);
+        //Lista de opciones Flujo Estudiar
         List<Option_Bustamante13452> opEstudiar = new ArrayList<>();
-        opEstudiar.add(op8);
-        Flow_Bustamante13452 fEstudiar = new Flow_Bustamante13452(2, "Que tipo de estudios deseas realizar", opEstudiar);
+        opEstudiar.add(op7);
+        Flow_Bustamante13452 fEstudiar = new Flow_Bustamante13452(3, "Que tipo de estudios deseas realizar", opEstudiar);
+        fEstudiar.flowAddOption(op8);  fEstudiar.flowAddOption(op9);
 
-        flows.add(fEstudiar);
-        flows.add(fInicial);
-        flows.add(fViajar);
 
-        Chatbot_Bustamante13452 ChatFinicial = new Chatbot_Bustamante13452(0, "Inicial", "Bienvenido", 1, List.of(fInicial));
-        Chatbot_Bustamante13452 ChatFviajar = new Chatbot_Bustamante13452(1, "Viajar", "Agencia de Viajes", 2, List.of(fViajar));
-        Chatbot_Bustamante13452 ChatFLugares = new Chatbot_Bustamante13452(2, "Estudiar", "Universidad", 3, List.of(fEstudiar));
-        chatbots.add(ChatFinicial);
-        chatbots.add(ChatFviajar);
-        chatbots.add(ChatFLugares);
-        system.systemAddChatbot(0, "Inicial", "Bienvenido", 1, List.of(fInicial));
-        system.systemAddChatbot(1, "Viajar", "Agencia de Viajes", 2, List.of(fViajar));
-        system.systemAddChatbot(2, "Estudiar", "Universidad", 3, List.of(fEstudiar));
+        Option_Bustamante13452 op10 = new Option_Bustamante13452(10, "1) Chile", 2, 5, keywordsOp10);
+        Option_Bustamante13452 op11 = new Option_Bustamante13452(11, "2) EEUU", 2, 5, keywordsOp11);
+        //Lista de opciones Flujo Etudiar-Donde
+        List<Option_Bustamante13452> opDonde = new ArrayList<>();
+        opDonde.add(op10);
+        Flow_Bustamante13452 fDonde = new Flow_Bustamante13452(4, "Donde quieres estudiar?", opDonde);
+        fDonde.flowAddOption(op11);
+
+        //agregar opciones a lista de opciones
+        opcion.add(op1); opcion.add(op2); opcion.add(op3); opcion.add(op4); opcion.add(op5); opcion.add(op6);
+        opcion.add(op7); opcion.add(op8); opcion.add(op9); opcion.add(op10); opcion.add(op11);
+        //agregar fkujos a lista de flujos
+        flows.add(fInicial); flows.add(fViajar); flows.add(fEstudiar);
+
+        List<Flow_Bustamante13452> chatViajar = new ArrayList<>();
+        chatViajar.add(fViajar);
+        chatViajar.add(fVas);
+
+        List<Flow_Bustamante13452> chatEstudiar = new ArrayList<>();
+        chatEstudiar.add(fEstudiar);
+        chatEstudiar.add(fDonde);
+        chatEstudiar.add(fVas);
+
+        Chatbot_Bustamante13452 ChatFinicial = new Chatbot_Bustamante13452(0, "Chatbot-Inicial", "Bienvenido", 1, List.of(fInicial));
+        Chatbot_Bustamante13452 ChatFviajar = new Chatbot_Bustamante13452(1, "Chatbot-Viajar", "Bienvenido a tu aventura", 2, chatViajar);
+        Chatbot_Bustamante13452 ChatFestudiar = new Chatbot_Bustamante13452(2, "Chatbot-Estudiar", "Bienvenido a educacion", 3, chatEstudiar);
+
+        system.systemAddChatbot(0, "Chatbot-Inicial", "Bienvenido", 1, List.of(fInicial));
+        system.systemAddChatbot(1, "Chatbot-Viajar", "Bienvenido a tu aventura", 2, chatViajar);
+        system.systemAddChatbot(2, "Chatbot-Estudiar", "Bienvenido a educacion", 3, chatEstudiar);
+
+        chatbots.add(ChatFinicial); chatbots.add(ChatFviajar); chatbots.add(ChatFestudiar);
 
         /* Fin Cargar datos duros sistema  */
 
@@ -319,10 +335,10 @@ public class Main {
                                         break;
                                 case 3: //Ejecutar Chatbot
                                     System.out.print("\n============================================================\n");
-                                    System.out.println(" Sistema de Chatbot - Ejecutar Chatbot ");
+                                    System.out.println(" Bienvenido al chatbot. ");
+                                    System.out.println(" Escribe 'salir' para terminar conversacion");
                                     System.out.print("============================================================\n");
 
-                                    System.out.println("Bienvenido al chatbot. Escribe 'salir' para terminar conversacion\n");
                                     System.out.println("Que deseas hacer?:");
                                     System.out.println("1) Viajar");
                                     System.out.println("2) Estudiar");

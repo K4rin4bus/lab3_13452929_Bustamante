@@ -89,6 +89,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
 
         Scanner inputTalk = new Scanner(System.in);
         List<Flow_Bustamante13452> flowsTalk = flows;
+        //List<Chatbot_Bustamante13452> chatbotTalk = chatbots;
+        //System.out.print(chatbotTalk);
+
 
         while (true) {
             System.out.print("Usuario: ");
@@ -101,9 +104,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
 
             Flow_Bustamante13452 matchingFlow = buscarFlujoPorOpcion(userInput, flowsTalk);
 
-            System.out.println(matchingFlow);
+            //System.out.println(matchingFlow);
             if (matchingFlow != null) {
-                System.out.println("Chatbot: " + matchingFlow.getName_Msg());
+                System.out.println("Chatbot: Flujo Id - " + matchingFlow.getId());
                 String match = matchingFlow.getName_Msg();
                 // realizar acciones según el flujo encontrado.
                 mostrarFlujoFinder(matchingFlow);

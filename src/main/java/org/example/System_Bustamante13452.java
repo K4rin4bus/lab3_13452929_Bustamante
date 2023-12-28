@@ -11,14 +11,20 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
     private List<User_Bustamante13452> users = new ArrayList<>();
     private String currentUser;//para saber que usuario esta logeado
     private List<Chatbot_Bustamante13452> chatbots = new ArrayList<>();
-   // private List<History_Bustamante13452> history = new ArrayList<>();
+    private List<String> chatHistory = new ArrayList<>();
 
+    /**
+     * Constructor de System
+     */
     public System_Bustamante13452(String name) {
         this.name = name;
         this.fechaCreacion = new Date();
         this.currentUser = "";
     }
 
+    /**
+     * metodo para crear usuario
+     */
     public void register(String userName, boolean esAdmin, boolean estaLogeado) {
         boolean usuarioExistente = false;
 
@@ -37,7 +43,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
             System.out.println("usuario creado satisfactoriamente\n\n");
         }
     }
-
+    /**
+     * metodo para iniciar sesion usuario
+     */
     public boolean login(String userName) {
         boolean userLogExist = false;
         boolean isAdminLoggerIn = false;
@@ -58,7 +66,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
         return isAdminLoggerIn;
     }
-
+    /**
+     * metodo para cerrar sesion usuario
+     */
     @Override
     public void logout(String userName) {
         for(User_Bustamante13452 user : users){//recorre lista usuarios buscando conicidencia
@@ -68,6 +78,9 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
+    /**
+     * metodo para agregar un chatbot al sistema
+     */
     public void systemAddChatbot(int idChatbot, String nameChatbot, String msgChatbot, int idChatbotFlow, List<Flow_Bustamante13452> flows){
         boolean chatbotExiste = false;
 
@@ -85,58 +98,79 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         }
     }
 
-    public String talk(List<Flow_Bustamante13452> flows){
+    /**
+     * metodo para interactuar con el chatbot
+     */
+    public String talk(List<Flow_Bustamante13452> flows, List<Option_Bustamante13452> options){
 
         Scanner inputTalk = new Scanner(System.in);
-        List<Flow_Bustamante13452> flowsTalk = flows;
-        //List<Chatbot_Bustamante13452> chatbotTalk = chatbots;
-        //System.out.print(chatbotTalk);
-
+        List<Chatbot_Bustamante13452> chatbotsTalk = chatbots;
 
         while (true) {
             System.out.print("Usuario: ");
             String userInput = inputTalk.nextLine();
+            Option_Bustamante13452 matchingOption = buscarOtionPorKeyword(userInput, chatbotsTalk);
 
             if (userInput.equalsIgnoreCase("salir")) {
                 System.out.println("¡Hasta luego!");
                 break;
             }
-
-            Flow_Bustamante13452 matchingFlow = buscarFlujoPorOpcion(userInput, flowsTalk);
-
-            //System.out.println(matchingFlow);
-            if (matchingFlow != null) {
-                System.out.println("Chatbot: Flujo Id - " + matchingFlow.getId());
-                String match = matchingFlow.getName_Msg();
-                // realizar acciones según el flujo encontrado.
-                mostrarFlujoFinder(matchingFlow);
+            if (matchingOption != null) {
+                int matchIniFlowCodeLink = matchingOption.getInitialFlowCodeLink();
+                int matchCbCodeLink = matchingOption.getChatbotCodeLink();
+                //buscar chatbot y flows
+                Flow_Bustamante13452 matchingFlow = buscarCbPorCodeLink(chatbotsTalk, matchCbCodeLink, matchIniFlowCodeLink);
+                if (matchingFlow != null) {
+                    mostrarFlujoFinder(matchingFlow);
+                }else {
+                    System.out.println("Chatbot: No se encontró un flujo correspondiente.");
+                    System.out.println("Chatbot: 'salir' para volver al menu y crear flujo.");
+                }
 
             } else {
                 System.out.println("Chatbot: No se encontró una opción correspondiente.");
-                // Puedes manejar este caso según tus necesidades.
+                System.out.println("Chatbot: 'salir' para volver al menu y crear opcion.");
             }
         }
-
-        // Por ahora, devuelve una respuesta, quizas aqui podria ir creando el history
+        // Quizas aqui podria ir creando el history
         return "¡Hola! Soy un chatbot y estoy procesando tu mensaje";
-
     }
-
-    private static Flow_Bustamante13452 buscarFlujoPorOpcion(String userInput, List<Flow_Bustamante13452> flowsTalk){
-        // Itera sobre la lista de flujos y busca una opción que coincida con el input del usuario.
-        for (Flow_Bustamante13452 flowTalk : flowsTalk){
-            for(Option_Bustamante13452 optionTalk : flowTalk.getOptions()){
-                for (String keyword : optionTalk.getKeywords()) {
-                    if (userInput.toLowerCase().contains(keyword.toLowerCase())) {
-                        return flowTalk; // Devuelve el flujo si se encuentra una coincidencia.
+    /**
+     * metodo para mostrar flujo encontrado
+     */
+    private static Option_Bustamante13452 buscarOtionPorKeyword(String userInput, List<Chatbot_Bustamante13452> cbsTalk){
+        for (Chatbot_Bustamante13452 chatbot : cbsTalk) {
+            for (Flow_Bustamante13452 flow : chatbot.getFlows()) {
+                for (Option_Bustamante13452 option : flow.getOptions()) {
+                    for (String keyword : option.getKeywords()) {
+                        if (userInput.equalsIgnoreCase(keyword)) {
+                            return option;
+                        }
                     }
                 }
             }
         }
-        return null; //Devuelve null si no se encuentra ninguna coincidencia.
+        return null;
     }
-
-
+    /**
+     * metodo para buscar un flujo dentro de un chatbot
+     * devuelve un flow
+     */
+    private static Flow_Bustamante13452 buscarCbPorCodeLink(List<Chatbot_Bustamante13452> cbsTalk, int matchCbCodeLink, int matchIniFlowCodeLink) {
+    for (Chatbot_Bustamante13452 chatbot : cbsTalk) {
+        if (matchCbCodeLink == chatbot.getChatbotId()) {
+            for (Flow_Bustamante13452 flow : chatbot.getFlows()) {
+                if (matchIniFlowCodeLink == flow.getId()) {
+                    return flow;
+                }
+            }
+        }
+    }
+    return null;
+}
+    /**
+     * metodo para mostrar flujo encontrado
+     */
     private static void mostrarFlujoFinder(Flow_Bustamante13452 flowEncontrado){
         String msgFinder = flowEncontrado.getName_Msg();
         List<Option_Bustamante13452> opFinder = new ArrayList<>();
@@ -152,8 +186,6 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
         System.out.print("==================================\n");
     }
 
-
-
     @Override
     public String toString() {
         return "\n System_Bustamante13452{" +
@@ -164,4 +196,5 @@ public class System_Bustamante13452 implements ISystem_Bustamante13452 {
                 ", Chatbots=" + chatbots +
                 '}';
     }
+
 }
